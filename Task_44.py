@@ -7,3 +7,18 @@
 # data = pd.DataFrame({'whoAmI':lst})
 # data.head()
 
+
+import random
+import pandas as pd
+import numpy as np
+
+lst = ['robot'] * 10
+lst += ['human'] * 10
+random.shuffle(lst)
+data = pd.DataFrame({'whoAmI': lst})
+one_hot_data = pd.DataFrame()
+unique_values = data['whoAmI'].unique()
+for value in unique_values:
+        one_hot_data[value] = np.where(data['whoAmI'] == value, 1, 0)
+one_hot_data.head()
+print(one_hot_data)
